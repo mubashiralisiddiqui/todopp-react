@@ -1,16 +1,33 @@
 
 
 
-export default class TodoListAction {
+// export default class RecipieAction {
 
-    static Add_Todo = "ADD_TODO";
+//     static OpenDialogue = "OPENDIALOGUE";
 
-    static addTodo(TodoItemDIscription){
-        return{
-            type: TodoListAction.Add_Todo,
-            payload:{
-                text:TodoItemDIscription
-            }
-        }
-    }
+//     // static isDaialogueOpen(dialogueopen){
+//     //     console.log('checking')
+//     //     return  {
+//     //         type: "check",
+//     //         dialogueopen
+//     //     }
+//     // }
+// }
+
+// export default function isDaialogueOpen(){
+//     return {
+//         type: 'check'
+//     }
+// }
+export const isDaialogueOpen = (text) => ({
+
+  type: 'open',
+  text
+})
+
+
+export const getrecipi =(payload)=>{
+  console.log("payload====",payload)
+  type:"getrecipi",
+  payload
 }

@@ -1,13 +1,9 @@
-import { combineReducers } from 'redux';
 
-// import UserReducer from './reducers-user';
-// import ActiveUserReducer from './reducer-active-user';
-import CounterReducer from './reducer-counter';
+import {combineReducers} from 'redux';
+import {dialogueOpenReducer} from './reciepiReducer';
 
+const rootReducer = combineReducers({
+    recipes: dialogueOpenReducer,
+});
 
-const allReducers = combineReducers({
-    // users: UserReducer,
-    // activeUser: ActiveUserReducer,
-    counter: CounterReducer
-})
-export default allReducers;
+export default rootReducer;

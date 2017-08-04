@@ -1,71 +1,31 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-// import MDSpinner from 'react-md-spinner';
+import React from 'react';
+// import axios from 'axios';
 
-import CamperList from './camperList';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recentCampers: [],
-      allTimeCampers: [],
-      currentView: 'recentCampers'
-    };
+;
+import AddReceipie from './AddRecipie.js';
+
+
+class RecipieBox extends React.Component{
+  
+  render(){
+    const style={
+      heading:{
+        textAlign:"center",
+      },
+      // RecipieBox:{
+      //   paddingLeft:"480px",
+      //   backgroundColor:"gray"
+      // }
   }
-
-  componentWillMount() {
-    axios.all([this.fetchRecentCampers(), this.fetchAllTimeCampers()])
-      .then(axios.spread((recentCampers, allTimeCampers) => {
-        this.setState({
-          recentCampers: recentCampers.data,
-          allTimeCampers: allTimeCampers.data
-        });
-      }));
-  }
-
-  fetchRecentCampers() {
-    return axios.get('https://fcctop100.herokuapp.com/api/fccusers/top/recent');
-  }
-
-  fetchAllTimeCampers() {
-    return axios.get('https://fcctop100.herokuapp.com/api/fccusers/top/alltime');
-  }
-
-  changeView(currentView) {
-    this.setState({ currentView });
-  }
-
-  render() {
-   const style={
-     heading:{
-     backgroundColor:"black",
-     color :"white",
-     textAlign:"center",
-     width:"100%",
-     height:"80px",
-     paddingTop:"20px"},
-     button:{
-       width:"200px",
-       marginLeft:"20px",
-      //  backgroundColor:"white",
-       color:"black",
-      
-     }
-
-   }
-
-    return (
-      
+    return(
       <div>
-        {console.log("current campers",this.state.currentView)}
-        <div style={style.heading}>
-        <h2>{`Viewing Top ${this.state.currentView}`}</h2>
-        </div>
-        <button onClick={() => this.changeView('recentCampers')} className="btn btn-primary"style={style.button}>Recent campers</button>
-         <button onClick={() => this.changeView('allTimeCampers')} className="btn btn-primary" style={style.button}>All Time Campers</button> 
-        <CamperList campers={this.state[this.state.currentView]} />
+        <h1 style={style.heading}>RecipieBox</h1>
+        <div style={style.RecipieBox}>
+      <AddReceipie/>
       </div>
-    );
+      </div>
+    )
   }
 }
+export default RecipieBox;
