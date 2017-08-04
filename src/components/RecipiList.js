@@ -2,17 +2,15 @@ import React from 'react';
 // import {GridList, GridTile} from 'material-ui/GridList';\
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import { Accordion, Panel,ButtonToolbar,Button } from 'react-bootstrap';
+import UpdateRecipi from './updateRecip.js'
+import { Accordion, Panel, ButtonToolbar, Button } from 'react-bootstrap';
 class RecipiList extends React.Component {
     constructor(props) {
         super(props)
         console.log("props value", this.props.recipivalue)
-        this.state = {
-            recipies: []
-        }
-        
+
     }
-    
+
     // 
     render() {
         const style = {
@@ -38,14 +36,22 @@ class RecipiList extends React.Component {
                                 <h2 style={style.heading}>Ingredients</h2>
                                 <h3>{v.Ingredients}</h3>
                                 <ButtonToolbar>
-                                    <Button className="delete" bsStyle="danger" onClick={()=>this.props.delete(i)}>Delete</Button>
-                                    <Button bsStyle="default"  onClick={this.edit}>Edit</Button>
+                                    <Button className="delete" bsStyle="danger" onClick={() => this.props.delete(i)}>Delete</Button>
+                                    <Button bsStyle="default" onClick={this.props.toggle}>Edit</Button>
                                 </ButtonToolbar>
                             </Panel>
+                            <UpdateRecipi
+
+                                 handleToggle={this.props.handleToggle} 
+                                handleUpdate={this.props.handleUpdate}
+                                isOpen={this.props.isOpen}
+                                handlechange={this.props.handlechange}
+                                recipiTitle={v.recipiTitle}
+                                Ingrident={v.Ingredients}
+
+                            />
 
                         </Accordion>
-
-
                     )
                 })}
 
