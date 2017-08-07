@@ -1,23 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-
-import './index.css';
-
-import 'bootstrap/dist/css/bootstrap.css';
+import App from './containers/App';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 ReactDOM.render(
-   
-  <MuiThemeProvider>
-
-    <div>
-
+    <MuiThemeProvider>
         <App />
-    </div>
-    </MuiThemeProvider>
-  
-    ,
-
+    </MuiThemeProvider>,
     document.getElementById('root')
 );
