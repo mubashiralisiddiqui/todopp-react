@@ -1,7 +1,6 @@
 import React from 'react';
 
-//this is list component
-class TodoList extends React.Component {
+export default class TodoList extends React.Component {
 
     render() {
         return (
@@ -17,4 +16,3 @@ class TodoList extends React.Component {
         )
     }
 }
-export default TodoList;
