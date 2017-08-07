@@ -1,14 +1,11 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 class UpdateRecipi extends React.Component {
-    constructor(props) {
-        super(props);
-        
-    }
+
 
     render() {
 
@@ -16,7 +13,7 @@ class UpdateRecipi extends React.Component {
             <FlatButton
                 label="Save"
                 secondary={true}
-                onClick={this.props.handleUpdate}
+                onClick={() => this.props.handleUpdate(this.props.index)}
             />,
             <FlatButton
                 label="Cancel"
@@ -35,45 +32,43 @@ class UpdateRecipi extends React.Component {
                     actions={actions}
                     modal={false}
                     open={this.props.isOpen}
-                // onRequestClose={this.props.handleToggle} 
+                
                 >
-
-                    <form onSubmit={this.props.handleUpdate}>
+                  
+                    <form onSubmit={() => this.props.handleUpdate(this.props.index)}>
                         <div className="form-group">
                             <TextField
                                 type="text"
-                                hintText="update Recipe Title"
-                                floatingLabelText="Recipe Title"
+                                hintText={this.props.recipiTitle}
+                                floatingLabelText={this.props.recipiTitle}
                                 name="recipiTitle"
                                 onChange={this.props.handlechange}
                                 fullWidth={true}
-                                value={this.props.recipiTitle}
-                                 
+                             //value={this.props.recipiTitle} 
+
                             />
 
                         </div>
-                        
+
                         <div className="form-group">
-                             {console.log(this.props.Ingrident)}
+                           
+
                             <TextField
                                 type="text"
-                                hintText="Yogurt, Cheese, Water"
+                                hintText={this.props.ingrident}
                                 floatingLabelText={this.props.Ingrident}
                                 name="ingredient"
                                 onChange={this.props.handlechange}
                                 style={{ textAlign: 'left' }}
                                 multiLine={true}
                                 fullWidth={true}
-                                value={this.props.Ingrident}
-                                
-                               
-                               
+                                 //value={this.props.Ingrident} 
                             />
                         </div>
 
                     </form>
                 </Dialog>
-                
+
 
             </div>
         )

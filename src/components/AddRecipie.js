@@ -3,7 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import UpdateRecipi from './updateRecip.js'
+// import UpdateRecipi from './updateRecip.js'
 import ReipiList from './RecipiList'
 
 class AddReceipie extends React.Component {
@@ -11,10 +11,12 @@ class AddReceipie extends React.Component {
         super(props);
         this.state = {
             open: false,
+            dialog:false,
             edit: false,
             recipiarrr: [],
             recipiTitle: '',
             ingredient: '',
+            id:null
         }
     }
 
@@ -44,15 +46,16 @@ class AddReceipie extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-
     }
     recipevalue() {
         //form value object
-        let recipy = {
+        let obj = {
             recipiTitle: this.state.recipiTitle,
-            Ingredients: this.state.ingredient,
+            ingredient: this.state.ingredient,
         }
-        let newitem = this.state.recipiarrr.concat(recipy);
+        // let id = Math.random()*100
+        
+        let newitem = this.state.recipiarrr.concat(obj);
         console.log("newitem=========", newitem)
 
         this.setState({
@@ -61,30 +64,33 @@ class AddReceipie extends React.Component {
         })
         localStorage.setItem("receipi", JSON.stringify(newitem))
     }
-    handleUpdate() {
+    handleUpdate(index) {
+        const selectedItem = this.state.recipiarrr[index]
+        console.log(selectedItem)
+        selectedItem.recipiTitle = this.state.recipiTitle;
+        selectedItem.ingredient = this.state.ingredient;
+        if(selectedItem.recipiTitle.length<2||selectedItem.ingredient.length<2){
+            alert("please update some thing else it will empty")
+            
+        }
+        else{
+            localStorage.setItem('receipi', JSON.stringify(this.state.recipiarrr))
+        }
+      
+        
         this.setState({
-            edit:!this.state.edit,
-            recipiarrr:this.state.recipiarrr
+            dialog:!this.state.dialog
         })
-        localStorage.setItem('receipi',JSON.stringify(this.state.recipiarrr))
     }
     toggleDialog() {
         console.log('toggledialog')
         this.setState({
-            edit: !this.state.edit
+            dialog: !this.state.dialog
         })
     }
 
     render() {
-        const style = {
-            textarea: {
-                width: '100%',
-                borderRadius: "4px"
-            },
-            label: { color: "black" },
-
-        }
-        // console.log(this.state.recipiarrr)
+       
         const actions = [
             <FlatButton
                 label="ADD RECIPI"
@@ -101,9 +107,10 @@ class AddReceipie extends React.Component {
 
         return (
             <div>
+               
                 <RaisedButton label="Add Receipie" secondary={true} onClick={() => this.handleOpen()} />
                 <Dialog
-
+    
                     title="Add recipies"
                     actions={actions}
                     modal={false}
@@ -139,25 +146,17 @@ class AddReceipie extends React.Component {
 
                     </form>
                 </Dialog>
-                {/* <UpdateRecipi
-                    objState={this.state.recipiarrr}
-                    handleToggle={() => this.toggleDialog()}
-                    handleUpdate={() => this.handleUpdate()}
-                    isOpen={this.state.edit}
-                    handlechange={(target) => { this.handlechange(target) }}
-                    
-                /> */}
                 <ReipiList
                     recipivalue={this.state.recipiarrr}
                     delete={(key) => this.deleteIngredients(key)}
                     toggle={() => { this.toggleDialog() }}
-                    
-                    isOpen={this.state.edit}
+                    isOpen={this.state.dialog}
                     handleToggle={() => this.toggleDialog()}
-                    handleUpdate={() => this.handleUpdate()}
-                     handlechange={(target) => { this.handlechange(target) }}
-                     titlestate={this.state.recipiTitle}
+                    handleUpdate={(index) => this.handleUpdate(index)}
+                    handlechange={(target) => { this.handlechange(target) }}
+                    titlestate={this.state.recipiTitle}
                 />
+                
             </div>
         );
     }
