@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import TodoList from '../TODOLIST/TodoList'
+import TodoList from '../TODOLIST/TodoList';
 export default class AddTodo extends React.Component {
     constructor(props) {
         super(props);
