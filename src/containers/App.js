@@ -6,8 +6,7 @@ export default class App extends React.Component {
     return (
       <div>
         <h1 style={{ textAlign: "center" }}>Todo App</h1>
-        <AddTodo/>
-        
+        <AddTodo/>   
       </div>
     )
   }
