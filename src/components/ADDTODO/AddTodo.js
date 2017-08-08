@@ -30,11 +30,11 @@ export default class AddTodo extends React.Component {
             <div style={style.parentdiv}>
                 <form onSubmit={() => this.AddTodoItems()}>
                     <TextField
+                        type="text"
                         hintText="Enter items"
                         floatingLabelText="Add som itmes"
                         name='Todoitem'
                         ref="todovalue"
-                        type="text"
                     />
                     <FloatingActionButton mini={true} style={style}>
                         <ContentAdd onClick={(e) => this.AddTodoItems(e)} />
