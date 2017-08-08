@@ -4,6 +4,7 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 
 export default class TodoList extends React.Component {
     render() {
+        const { Todos } = this.props;
         const style = {
             ListItem: {
                 width: 300,
@@ -12,7 +13,7 @@ export default class TodoList extends React.Component {
         return (
             <div>
                 <ul>
-                    {this.props.Todos.map((v, i) => {
+                    {Todos.map((v, i) => {
                         return (
                             <List key={i}>
                                 <ListItem style={style.ListItem} primaryText={v.item} leftIcon={<ContentInbox />} />

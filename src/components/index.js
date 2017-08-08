@@ -1,3 +1,3 @@
-import AddTodo from './AddTodo';
+import AddTodo from './ADDTODO/AddTodo';
 
-export{AddTodo}
+export  {AddTodo}

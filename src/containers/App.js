@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddTodo from '../components/AddTodo.js';
+import {AddTodo} from '../components';
 export default class App extends React.Component {
   render() {
     return (

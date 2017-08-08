@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import TodoList from './TodoList'
+import TodoList from '../TODOLIST/TodoList'
 export default class AddTodo extends React.Component {
     constructor(props) {
         super(props);
@@ -28,14 +28,12 @@ export default class AddTodo extends React.Component {
         };
         return (
             <div style={style.parentdiv}>
-                <form onSubmit={(e) => this.AddTodoItems(e)}>
-                    {console.log(this.state.Todos)}
+                <form onSubmit={() => this.AddTodoItems()}>
                     <TextField
                         hintText="Enter items"
                         floatingLabelText="Add som itmes"
                         name='Todoitem'
                         ref="todovalue"
-                        value={this.props.Todoitem}
                         type="text"
                     />
                     <FloatingActionButton mini={true} style={style}>
