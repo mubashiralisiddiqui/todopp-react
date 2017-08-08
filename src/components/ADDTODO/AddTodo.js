@@ -24,7 +24,7 @@ export default class AddTodo extends React.Component {
                     <TextField
                         type="text"
                         hintText="Enter items"
-                        floatingLabelText="Add som itmes"
+                        floatingLabelText="Add some items"
                         name='Todoitem'
                         ref="todovalue"
                     />
