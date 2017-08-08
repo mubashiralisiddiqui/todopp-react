@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Below you will find some information on how app look and work
+this is simple todo app on react
 
 http://foamy-town.surge.sh/
 
