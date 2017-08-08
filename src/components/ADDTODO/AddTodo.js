@@ -3,10 +3,9 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-
 export default class AddTodo extends React.Component {
     getformval(e) {
-        e.preventDefault()
+        e.preventDefault();
         let inputvalue = this.refs.todovalue.getValue();
         this.props.addTodo(inputvalue)
         this.refs.todoform.reset()

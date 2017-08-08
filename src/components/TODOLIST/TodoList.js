@@ -8,7 +8,7 @@ export default class TodoList extends React.Component {
         const style = {
             ListItem: {
                 width: 300,
-                marginLeft: "30%"
+                marginLeft: "30%",
             }
         }
         return (
