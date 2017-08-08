@@ -1,6 +1,6 @@
 import React from 'react';
-import { List, ListItem } from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import { List, ListItem } from 'material-ui/List';
 
 export default class TodoList extends React.Component {
     render() {
@@ -8,19 +8,19 @@ export default class TodoList extends React.Component {
         const style = {
             ListItem: {
                 width: 300,
+                marginLeft: "30%"
             }
         }
         return (
             <div>
                 <ul>
-                    {Todos.map((v, i) => {
+                    {Todos.map((text, index) => {
                         return (
-                            <List key={i}>
-                                <ListItem style={style.ListItem} primaryText={v.item} leftIcon={<ContentInbox />} />
+                            <List key={index}>
+                                <ListItem style={style.ListItem} primaryText={text.item} leftIcon={<ContentInbox />} />
                             </List>
                         )
                     })}
-
                 </ul>
             </div>
         )

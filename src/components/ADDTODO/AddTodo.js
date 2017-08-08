@@ -3,32 +3,24 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import TodoList from '../TODOLIST/TodoList';
+
 export default class AddTodo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            Todos: [],
-        }
-    }
-    AddTodoItems(e) {
-        e.preventDefault();
-        let Todoitem = { item: this.refs.todovalue.getValue() }
-        let Todos = this.state.Todos.concat(Todoitem);
-        this.setState({
-            Todos: Todos
-        })
+    getformval(e) {
+        e.preventDefault()
+        let inputvalue = this.refs.todovalue.getValue();
+        this.props.addTodo(inputvalue)
+        this.refs.todoform.reset()
     }
     render() {
         const style = {
             marginRight: 20,
             parentdiv: {
-                marginLeft: "40%"
+                marginLeft: "30%"
             }
         };
         return (
             <div style={style.parentdiv}>
-                <form onSubmit={() => this.AddTodoItems()}>
+                <form ref="todoform" onSubmit={(e) => this.getformval(e)}>
                     <TextField
                         type="text"
                         hintText="Enter items"
@@ -37,10 +29,9 @@ export default class AddTodo extends React.Component {
                         ref="todovalue"
                     />
                     <FloatingActionButton mini={true} style={style}>
-                        <ContentAdd onClick={(e) => this.AddTodoItems(e)} />
+                        <ContentAdd onClick={(e) => this.getformval(e)} />
                     </FloatingActionButton>
                 </form>
-                <TodoList Todos={this.state.Todos} />
             </div>
         )
     }
