@@ -1,12 +1,14 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import AccountBalance from 'material-ui/svg-icons/content/add-circle';
 
 export default class AddTodo extends React.Component {
     getformval(e) {
         e.preventDefault();
-        let inputvalue = this.refs.todovalue.getValue();
+        let inputvalue = this.input.value
         this.props.addTodo(inputvalue)
         this.refs.todoform.reset()
     }
@@ -14,22 +16,37 @@ export default class AddTodo extends React.Component {
         const style = {
             marginRight: 20,
             parentdiv: {
-                marginLeft: "30%"
+               margin:"10px auto",
+               width:'40%'
             }
         };
         return (
             <div style={style.parentdiv}>
                 <form ref="todoform" onSubmit={(e) => this.getformval(e)}>
-                    <TextField
-                        type="text"
-                        hintText="Enter items"
-                        floatingLabelText="Add some items"
-                        name='Todoitem'
-                        ref="todovalue"
-                    />
-                    <FloatingActionButton mini={true} style={style}>
-                        <ContentAdd onClick={(e) => this.getformval(e)} />
-                    </FloatingActionButton>
+                    <FormGroup
+                        bsSize="large"           
+                    >
+                        <span>
+                            <FormControl
+                                style={{ maxWidth: '250px',float:"left" }}
+                                type="text"
+                                bsSize="large"
+                                placeholder="Enter text"
+                                name='Todoitem'
+                                inputRef={(ref) => { this.input = ref }}
+
+                            /></span>
+                        <span>
+                            <Button
+                                 bsSize="small"
+                                 style={{ marginLeft:"0.5em"}} 
+                                onClick={(e) => this.getformval(e)}
+                                bsStyle='primary'
+                            ><ContentAdd />
+                            </Button>
+                        </span>
+
+                    </FormGroup>
                 </form>
             </div>
         )
