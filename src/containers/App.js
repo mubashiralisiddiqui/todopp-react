@@ -42,7 +42,7 @@ export default class App extends React.Component {
     console.log("=======",i,updateValue)
     let selectedItem=this.state.Todos[i];
     
-    selectedItem = updateValue
+    this.state.Todos[i] = updateValue
     
     console.log("update ", this.state.Todos)
     this.setState({
