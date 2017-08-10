@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import {App} from './containers';
+import { App } from './containers';
 injectTapEventPlugin();
 ReactDOM.render(
     <MuiThemeProvider>
