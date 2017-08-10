@@ -3,19 +3,31 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 import TextField from 'material-ui/TextField';
-export default class UpdateDialog extends React.Component {
+export default class Model extends React.Component {
+    state = {
+        todo: this.props.todo
+    }
+    handleChange(e) {
+        this.setState({
+            todo: e.target.value
+        })
+    }
+    handleUpdate() {
+        this.props.updateItem(this.props.index, this.state.todo)
+        this.props.toggleDialog()
+    }
     render() {
         const actions = [
             <FlatButton
                 label="Save"
                 secondary={true}
-             onClick={() => this.props.updateItem()}
+                onClick={() => this.handleUpdate()}
             />,
             <FlatButton
                 label="Cancel"
                 secondary={true}
                 keyboardFocused={true}
-            onClick={this.props.toggleDialog}
+                onClick={this.props.toggleDialog}
             />,
         ];
         return (
@@ -30,20 +42,12 @@ export default class UpdateDialog extends React.Component {
                         <div className="form-group">
                             <TextField
                                 type="text"
-                                floatingLabelText="asdgadgadf"
+                                hintText="update"
+                                floatingLabelText="update"
                                 name="recipiTitle"
+                                onChange={(e) => this.handleChange(e)}
                                 fullWidth={true}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <TextField
-                                type="text"
-                                hintText="asfasfdasfdadsf"
-                                floatingLabelText="asfdasfdadf"
-                                name="ingredient"
-                                style={{ textAlign: 'left' }}
-                                multiLine={true}
-                                fullWidth={true}
+                                value={this.state.todo}
                             />
                         </div>
                     </form>
