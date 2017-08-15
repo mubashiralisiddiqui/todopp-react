@@ -23,18 +23,16 @@ export default class TodoItem extends Component {
                 border: '2px solid gray',
                 borderRadius: "10px",
                 marginLeft: '30%',
-                height: "50px",
+                height: "50px auto",
                 padding: "08px",
                 fontFamily: "Times New Roman Georgia Serif",
                 fontSize: "20px",
             }
         }
-
         const props = this.props;
         return (
             <div key={props.index} style={style.listContainer} >
                 <span>{props.todo}</span>
-
                 <span>
                     <ButtonToolbar style={{ float: "right" }}>
                         <div>
@@ -46,6 +44,10 @@ export default class TodoItem extends Component {
                             <Button bsStyle="danger" onClick={() => this.props.deleteItem(props.index)}>Delete</Button>
                         </div>
                     </ButtonToolbar>
+                    <br />
+                    <div>
+                        <img alt="your snap" src={this.props.image} style={{ width: "200px", height: "100px" }} />
+                    </div>
                 </span>
                 <Model
                     isOpen={this.state.toggle}

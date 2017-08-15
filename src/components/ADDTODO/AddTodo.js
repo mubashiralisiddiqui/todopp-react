@@ -3,11 +3,20 @@ import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 export default class AddTodo extends React.Component {
+
     getformval(e) {
         e.preventDefault();
-        let inputvalue = this.input.value
-        this.props.addTodo(inputvalue)
+        this.props.addTodo()
         this.refs.todoform.reset()
+    }
+    onImageChange(event) {
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                this.props.onImageChange(e.target.result)
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
     }
     render() {
         const style = {
@@ -25,24 +34,33 @@ export default class AddTodo extends React.Component {
                     >
                         <span>
                             <FormControl
-                                style={{ maxWidth: '350px', float: "left" }}
+                                style={{ maxWidth: '300px', float: "left" }}
                                 type="text"
                                 bsSize="large"
                                 placeholder="Enter text"
                                 name='Todoitem'
                                 inputRef={(ref) => { this.input = ref }}
-
-                            /></span>
+                                onChange={(e) => this.props.onTOdoChange(e.target.value)}
+                            />
+                        </span>
                         <span>
                             <Button
                                 bsSize="small"
                                 style={{ marginLeft: "0.5em" }}
                                 onClick={(e) => this.getformval(e)}
                                 bsStyle='primary'
-                            ><ContentAdd />
+                            >
+                                <ContentAdd />
                             </Button>
                         </span>
-
+                        <br />
+                        <span>
+                            <input
+                                type="file"
+                                onChange={this.onImageChange.bind(this)}
+                            />
+                            <label>Add image</label>
+                        </span>
                     </FormGroup>
                 </form>
             </div>

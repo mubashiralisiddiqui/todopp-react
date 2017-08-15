@@ -7,14 +7,30 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       Todos: [],
+      todoInput: '',
+      image: ''
     }
   }
-  addTodo(inputval) {
-    const Todoitem = inputval
-    const Todos = this.state.Todos.concat(Todoitem);
+  onTOdoChange(e) {
     this.setState({
-      Todos,
+      todoInput: e
     })
+  }
+  onImageChange(url) {
+    this.setState({
+      image: url
+    })
+  }
+  addTodo() {
+    let obj = {
+      todoInput: this.state.todoInput,
+      image: this.state.image
+    }
+    let Todos = this.state.Todos.concat(obj);
+    this.setState({
+      Todos: Todos
+    })
+
   }
   deleteItem(i) {
     this.state.Todos.splice(i, 1)
@@ -23,7 +39,8 @@ export default class App extends React.Component {
     })
   }
   updateItem(i, updateValue) {
-    this.state.Todos[i] = updateValue
+    const selctedTodo = this.state.Todos[i];
+    selctedTodo.todoInput = updateValue
     this.setState({
       Todos: this.state.Todos,
     })
@@ -35,6 +52,10 @@ export default class App extends React.Component {
         <AddTodo
           addTodo={(val) => this.addTodo(val)}
           Todoitem={this.state.Todoitem}
+          onTOdoChange={(e) => this.onTOdoChange(e)}
+          todoinput={this.state.todoinput}
+          onImageChange={(url) => this.onImageChange(url)}
+          image={this.state.image}
         />
         <TodoList
           Todos={this.state.Todos}

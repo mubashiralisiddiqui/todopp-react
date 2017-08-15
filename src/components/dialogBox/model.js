@@ -55,7 +55,4 @@ export default class Model extends React.Component {
             </div>
         )
     }
-
-
-
 }
