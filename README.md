@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 this is  todo app on react with add delete and update feature 
 also image add and update feature
 
-http://foamy-town.surge.sh/
+http://thin-parcel.surge.sh/
 
 ## Table of Contents
   Reactjs 
