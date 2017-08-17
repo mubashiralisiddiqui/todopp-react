@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TodoList, AddTodo, } from '../components';
+import { TodoList, AddTodo } from '../components';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -8,7 +8,9 @@ export default class App extends React.Component {
     this.state = {
       Todos: [],
       todoInput: '',
-      image: ''
+      image: '',
+      updateImage: '',
+      preview: false
     }
   }
   onTOdoChange(e) {
@@ -17,6 +19,12 @@ export default class App extends React.Component {
     })
   }
   onImageChange(url) {
+    this.setState({
+      image: url,
+      preview: true
+    })
+  }
+  onUpdateImage(url) {
     this.setState({
       image: url
     })
@@ -28,9 +36,9 @@ export default class App extends React.Component {
     }
     let Todos = this.state.Todos.concat(obj);
     this.setState({
-      Todos: Todos
+      Todos: Todos,
+      preview: false
     })
-
   }
   deleteItem(i) {
     this.state.Todos.splice(i, 1)
@@ -40,6 +48,7 @@ export default class App extends React.Component {
   }
   updateItem(i, updateValue) {
     const selctedTodo = this.state.Todos[i];
+    selctedTodo.image = this.state.image
     selctedTodo.todoInput = updateValue
     this.setState({
       Todos: this.state.Todos,
@@ -56,11 +65,15 @@ export default class App extends React.Component {
           todoinput={this.state.todoinput}
           onImageChange={(url) => this.onImageChange(url)}
           image={this.state.image}
+          preview={this.state.preview}
         />
         <TodoList
           Todos={this.state.Todos}
           deleteItem={(i) => this.deleteItem(i)}
           updateItem={(i, updateValue) => this.updateItem(i, updateValue)}
+          onImageChange={(url) => this.onImageChange(url)}
+          image={this.state.image}
+          onUpdateImage={(url) => this.onUpdateImage(url)}
         />
       </div>
     )

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 
-import Model from '../dialogBox/model';
-
 export default class TodoItem extends Component {
     state = {
         toggle: false
     }
     toggleDialog() {
+        console.log("open ===")
         this.setState({
             toggle: !this.state.toggle
         })
@@ -37,7 +36,7 @@ export default class TodoItem extends Component {
                     <ButtonToolbar style={{ float: "right" }}>
                         <div>
                             <Button
-                                onClick={() => this.toggleDialog()}
+                                onClick={() => this.props.toggleDialog()}
                             >
                                 Edit
                             </Button>
@@ -49,13 +48,6 @@ export default class TodoItem extends Component {
                         <img alt="your snap" src={this.props.image} style={{ width: "200px", height: "100px" }} />
                     </div>
                 </span>
-                <Model
-                    isOpen={this.state.toggle}
-                    toggleDialog={() => this.toggleDialog()}
-                    index={props.index}
-                    todo={props.todo}
-                    updateItem={props.updateItem}
-                />
             </div>
         )
     }
