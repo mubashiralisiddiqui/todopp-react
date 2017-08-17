@@ -1,6 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-this is simple todo app on react
+this is  todo app on react with add delete and update feature 
+also image add and update feature
 
 http://foamy-town.surge.sh/
 
